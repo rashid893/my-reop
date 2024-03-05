@@ -2,8 +2,9 @@ FROM python:3
 
 WORKDIR /data
 
-RUN pip install django
+RUN pip install django4
 RUN pip install Pillow
+
 <<<<<<< HEAD
 
 
