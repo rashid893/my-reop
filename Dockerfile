@@ -1,20 +1,20 @@
+# Use the official Python image as the base image
 FROM python:3
 
+# Set the working directory to /data
 WORKDIR /data
 
-RUN pip install django
-RUN pip install Pillow
+# Install Django and Pillow
+RUN pip install django Pillow
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> bd1711d59a915f48af17bdac16a3cff5b985ceb9
+# Copy the current directory contents into the container at /data
 COPY . .
 
-RUN python manage.py migrate
+# Run Django migrations
 
+
+# Expose port 8000 for the Django development server
 EXPOSE 8000
 
-
-CMD ["python","manage.py","runserver","0.0.0.0:8000"]
+# Start the Django development server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
