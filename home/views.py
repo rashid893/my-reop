@@ -8,6 +8,42 @@ from datetime import datetime
 def home(request):
     return render(request,'home.html')
 
+def views_data_module1(request):
+
+    if request.method=="POST":
+       
+       data=request.POST.get('client')
+       data=CompanyBooking.objects.filter(Company_Bookings=data)
+       print("here data ",data)
+       return render(request,'view_entreis1.html',{'data':data})
+
+    return render(request,'view_entreis1.html')
+
+def views_data_module2(request):
+
+    if request.method=="POST":
+       
+       data=request.POST.get('client')
+
+       data=Deal.objects.filter(trader_name=data)
+       print("here data ",data)
+       return render(request,'view_entries2.html',{'data':data})
+
+    return render(request,'view_entries2.html')
+
+def views_data_module3(request):
+
+    if request.method=="POST":
+       
+       data=request.POST.get('client')
+       data=Module3.objects.filter(trader_name=data)
+       print("here data ",data)
+       return render(request,'view_entries3.html',{'data':data})
+
+    return render(request,'view_entries3.html')
+
+
+
 
 
 def module1(request):
