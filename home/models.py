@@ -133,3 +133,19 @@ def update_bilty_number(sender, instance, **kwargs):
             date_str = datetime.now().strftime('%Y%m%d')
 
         instance.system_generated_bilty_number = f"{instance.trader_name}{date_str}-{instance.serial_number}"
+
+class Module4(models.Model):
+    trader_name = models.CharField(max_length=255,null=True,blank=True)
+    product_name=models.CharField(max_length=255)
+    stock_in=models.CharField(max_length=122)
+    stock_out=models.CharField(max_length=122)
+    per_bag_price=models.CharField(max_length=122)
+    total_tons = models.DecimalField(max_digits=25, decimal_places=2)
+    number_of_bags = models.IntegerField()
+    total_price = models.DecimalField(max_digits=19, decimal_places=2)
+    stock_out_price=models.CharField(max_length=122)
+    remaining_stock_price=models.CharField(max_length=122)
+    profit=models.CharField(max_length=122)
+
+
+

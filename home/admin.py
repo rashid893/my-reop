@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CompanyBooking,Deal,Module3
+from .models import CompanyBooking,Deal,Module3,Module4
 
 # Register your models here.
 
@@ -16,3 +16,8 @@ class DealAdmin(admin.ModelAdmin):
 @admin.register(Module3)
 class Module3Admin(admin.ModelAdmin):
     list_display = [field.name for field in Module3._meta.fields]
+
+
+@admin.register(Module4)
+class Module4Admin(admin.ModelAdmin):
+    list_display = [field.name for field in Module4._meta.fields]

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import CompanyBooking,Deal,Module3
+from .models import CompanyBooking,Deal,Module3,Module4
 from django.contrib import messages
 from datetime import datetime
 
@@ -41,6 +41,19 @@ def views_data_module3(request):
        return render(request,'view_entries3.html',{'data':data})
 
     return render(request,'view_entries3.html')
+
+
+def views_data_module4(request):
+
+    if request.method=="POST":
+       
+       data=request.POST.get('client')
+       data=Module4.objects.filter(trader_name=data)
+       print("here data ",data)
+       return render(request,'view_entries4.html',{'data':data})
+
+    return render(request,'view_entries4.html')
+
 
 
 
@@ -285,6 +298,50 @@ def module3(request):
         return render(request, 'module3.html') # Redirect to the same page or another page
     else:
         return render(request, 'module3.html')
+    
+
+
+#####################   MODULE 4  #############################
+    
+
+
+
+def module4(request):
+    if request.method == 'POST':
+        trader_name = request.POST.get('client')
+        product_name = request.POST.get('product_name')
+        stock_in = request.POST.get('stock_in')
+        stock_out = request.POST.get('stock_out')
+        per_bag_price = request.POST.get('per_bag_price')
+        total_tons = request.POST.get('total_tons')
+        number_of_bags = request.POST.get('number_of_bags')
+        total_price = request.POST.get('total_price')
+        stock_out_price = request.POST.get('stock_out_price')
+        remaining_stock_price = request.POST.get('remaining_stock_price')
+        profit = request.POST.get('profit')
+
+        # Create a Module4 object and save it to the database
+        module4_instance = Module4(
+            trader_name=trader_name,
+            product_name=product_name,
+            stock_in=stock_in,
+            stock_out=stock_out,
+            per_bag_price=per_bag_price,
+            total_tons=total_tons,
+            number_of_bags=number_of_bags,
+            total_price=total_price,
+            stock_out_price=stock_out_price,
+            remaining_stock_price=remaining_stock_price,
+            profit=profit
+        )
+        module4_instance.save()
+
+        # Redirect to a success page or another view
+        messages.success(request, 'Data added successfully')
+        return render(request, 'module4.html')  
+
+    return render(request, 'module4.html')
+
 
     
 
